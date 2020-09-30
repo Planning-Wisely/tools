@@ -61,15 +61,13 @@ fun handleSelect(repository: Pair<Int, Int>, repositories: RepositoriesModel) {
 
     val issueRawType = readLine()!!
     val type = IssueType.values().find { it.flow.equals(issueRawType, true) } ?: IssueType.Feature
+    val issue = issues.entry.find { it.number == selected }
 
-    with(
-        type.flow + issues.entry.find {
-            it.number == selected
-        }?.title?.toLowerCase()?.replace(" ", "-")
-    ) {
-        val selection = StringSelection(this)
+    with(issue?.title?.toLowerCase()?.replace(" ", "-")) {
+        val new = type.flow + "${issue?.number ?: "???"}-" + this
+        val selection = StringSelection(new)
         getDefaultToolkit().systemClipboard.setContents(selection, selection)
-        println("`$this` branch name copied to clipboard")
+        println("`$new` branch name copied to clipboard")
     }
 }
 
