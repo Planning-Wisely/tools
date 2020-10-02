@@ -22,7 +22,7 @@ fun printSelectMessage() {
 
 fun printRepositories(repositories: RepositoriesModel) {
     with(repositories) {
-        entry.joinToString(",\n") { repository ->
+        entry.joinToString(",\n", postfix = "\n") { repository ->
             val repositoryIndex = entry.indexOf(entry.find { it.name == repository.name }) + 1
             "   > ${repositoryIndex}. ${repository.name} (I: ${repository.openIssuesCount}, U: ${repository.url})"
         }
@@ -47,7 +47,7 @@ fun handleSelect(repository: Pair<Int, Int>, repositories: RepositoriesModel) {
     println("Select a issue number you want to get issue branch name: ")
 
     with(issues) {
-        entry.joinToString(",\n") { issue ->
+        entry.joinToString(",\n", postfix = "\n") { issue ->
             "   > ${issue.number}. ${issue.title}, (U: ${issue.url})"
         }
     }.also(::println)
@@ -58,7 +58,7 @@ fun handleSelect(repository: Pair<Int, Int>, repositories: RepositoriesModel) {
         }.let { selected }
     } ?: 1
 
-    println("Type `f` if that issue is feature or `b` if that issues is bug, default type is `f`")
+    println("Type `f` if that issue is feature or `b` if that issues is bug, default type is `f`\n")
 
     val issueRawType = readLine()!!
     val type = IssueType.values().find { it.flow.equals(issueRawType, true) } ?: IssueType.Feature
@@ -74,7 +74,7 @@ fun handleSelect(repository: Pair<Int, Int>, repositories: RepositoriesModel) {
 
 
 fun exitCondition(repositories: RepositoriesModel) {
-    println("Type `exit` for exit or `again` for see repository issues again")
+    println("Type `exit` for exit or `again` for see repository issues again\n")
     when (readLine()) {
         "exit" -> exitProcess(0)
         "again" -> {
