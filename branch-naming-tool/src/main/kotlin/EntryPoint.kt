@@ -23,7 +23,8 @@ fun printSelectMessage() {
 fun printRepositories(repositories: RepositoriesModel) {
     with(repositories) {
         entry.joinToString(",\n") { repository ->
-            "   > ${entry.indexOf(entry.find { it.name == repository.name }) + 1}. ${repository.name} (I: ${repository.openIssuesCount}, U: ${repository.url})"
+            val repositoryIndex = entry.indexOf(entry.find { it.name == repository.name }) + 1
+            "   > ${repositoryIndex}. ${repository.name} (I: ${repository.openIssuesCount}, U: ${repository.url})"
         }
     }.also(::println)
 }
