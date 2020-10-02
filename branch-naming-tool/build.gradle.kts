@@ -23,7 +23,6 @@ dependencies {
     implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2")
     testImplementation(kotlin("test-junit5"))
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
     testImplementation("io.mockk:mockk:1.10.2")
 }
 
