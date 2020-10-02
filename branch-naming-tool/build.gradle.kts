@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.10"
-    kotlin("plugin.serialization") version "1.4.10"
+    kotlin("jvm")
+    kotlin("plugin.serialization")
     id("com.github.johnrengelman.shadow") version "6.0.0"
     application
     java
@@ -13,7 +13,6 @@ group = "com.planningwisely"
 version = "1.0.0-SNAPSHOT.1"
 
 repositories {
-    mavenCentral()
     jcenter()
 }
 
