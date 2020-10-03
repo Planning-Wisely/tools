@@ -1,6 +1,7 @@
 package com.planningwisely.branchtool
 
 import com.planningwisely.branchtool.enums.IssueType
+import com.planningwisely.branchtool.enums.IssueType.Feature
 import com.planningwisely.branchtool.github.abst.IGitHubApiWrapper
 import com.planningwisely.branchtool.helpers.incorrect
 import com.planningwisely.branchtool.koin.initializeDi
@@ -88,8 +89,7 @@ object EntryPoint : KoinComponent {
         println("Type `f` if that issue is feature or `b` if that issues is bug, default type is `f`\n")
 
         val issueRawType = readLine()!!
-        val type =
-            IssueType.values().find { it.flow.equals(issueRawType, true) } ?: IssueType.Feature
+        val type = IssueType.values().find { it.flow.equals(issueRawType, true) } ?: Feature
         val issue = issues.root.find { it.number == selected }
 
         with(issue?.title?.toLowerCase()?.replace(" ", "-")) {
