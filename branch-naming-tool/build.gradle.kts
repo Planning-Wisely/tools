@@ -52,5 +52,5 @@ tasks.withType<Test> {
 }
 
 application {
-    mainClassName = "EntryPointKt"
+    mainClassName = "com.planningwisely.branchtool.EntryPoint"
 }
